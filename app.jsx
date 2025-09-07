@@ -1,9 +1,20 @@
 
-const { useState, useEffect, useRef } = React;
+const { useState, useEffect } = React;
 
 const FALLBACK_BODY_SHAPES = {
   "default": "M 80 220 C 90 160 150 140 210 140 L 400 140 C 450 140 520 160 540 210 L 560 260 L 600 260 C 620 260 630 280 630 300 L 630 320 C 630 340 620 350 600 350 L 540 350 L 520 420 L 480 420 L 460 350 L 240 350 L 220 420 L 180 420 L 160 350 L 120 350 C 100 350 90 340 90 320 L 90 300 C 90 280 100 260 120 260 L 160 260 Z"
 };
+
+const FONT_CHOICES = [
+  { id: "system-sans", label: "System Sans", css: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" },
+  { id: "system-serif", label: "System Serif", css: "ui-serif, Georgia, 'Times New Roman', Times, serif" },
+  { id: "montserrat", label: "Montserrat (clean sans)", css: "'Montserrat', ui-sans-serif, system-ui, Arial, sans-serif" },
+  { id: "poppins", label: "Poppins (modern sans)", css: "'Poppins', ui-sans-serif, system-ui, Arial, sans-serif" },
+  { id: "merriweather", label: "Merriweather (serif)", css: "'Merriweather', ui-serif, Georgia, serif" },
+  { id: "playfair", label: "Playfair Display (serif)", css: "'Playfair Display', ui-serif, Georgia, serif" },
+  { id: "lora", label: "Lora (serif)", css: "'Lora', ui-serif, Georgia, serif" },
+  { id: "roboto-slab", label: "Roboto Slab (serif)", css: "'Roboto Slab', ui-serif, Georgia, serif" }
+];
 
 function App() {
   const [breedMeta, setBreedMeta] = useState({});
@@ -15,9 +26,13 @@ function App() {
   const [ears, setEars] = useState("natural");
   const [tail, setTail] = useState("natural");
   const [facing, setFacing] = useState("right");
+
   const [regName, setRegName] = useState("Kennel Name’s Leading by Example");
   const [callName, setCallName] = useState("Call Name: Demo");
-  const [font, setFont] = useState("ui-sans-serif");
+
+  const [regFont, setRegFont] = useState("montserrat");
+  const [callFont, setCallFont] = useState("playfair");
+  const [titleFont, setTitleFont] = useState("system-sans");
 
   const [registry, setRegistry] = useState("AKC");
   const [sport, setSport] = useState("");
@@ -51,15 +66,12 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    try { localStorage.setItem("wagbrag-cart", JSON.stringify(cart)); } catch {}
-  }, [cart]);
+  useEffect(() => { try { localStorage.setItem("wagbrag-cart", JSON.stringify(cart)); } catch {} }, [cart]);
 
   const meta = breedMeta[breed] || {};
   const allowedEars = meta.allowedEars || ["natural"];
   const allowedTails = meta.allowedTails || ["natural"];
   const dogSil = silhouettes[breed];
-
   const centerX = 320;
   const faceTransform = facing === "left" ? `translate(${centerX},0) scale(-1,1) translate(${-centerX},0)` : "";
 
@@ -95,6 +107,8 @@ function App() {
     const url = URL.createObjectURL(blob); const a = document.createElement("a");
     a.href = url; a.download = "wagbrag_selection.json"; a.click(); URL.revokeObjectURL(url);
   }
+
+  function fontCSS(id) { return (FONT_CHOICES.find(f => f.id === id) || FONT_CHOICES[0]).css; }
 
   return (
     <div style={{maxWidth:1200, margin:"0 auto", padding:16, display:"grid", gridTemplateColumns:"360px 1fr", gap:16}}>
@@ -136,13 +150,20 @@ function App() {
         <div className="label">Call Name (optional)</div>
         <input value={callName} placeholder="Call Name: Demo" onChange={(e)=>setCallName(e.target.value)} />
 
-        <div className="label">Connector style</div>
-        <div className="row">
-          {Object.entries(connectors).map(([key, c]) => (
-            <button key={key} className={"btn " + (selConn===key? "active":"")} onClick={()=>setSelConn(key)}>{c.label || key}</button>
-          ))}
-        </div>
-        <div className="muted">You can add titles from one sport, switch to another (or registry), and keep adding. Use the Selected Titles panel to review or remove.</div>
+        <div className="label">Registered Name Font</div>
+        <select value={regFont} onChange={(e)=>setRegFont(e.target.value)}>
+          {FONT_CHOICES.map(f => (<option key={f.id} value={f.id}>{f.label}</option>))}
+        </select>
+
+        <div className="label">Call Name Font</div>
+        <select value={callFont} onChange={(e)=>setCallFont(e.target.value)}>
+          {FONT_CHOICES.map(f => (<option key={f.id} value={f.id}>{f.label}</option>))}
+        </select>
+
+        <div className="label">Title Pieces Font</div>
+        <select value={titleFont} onChange={(e)=>setTitleFont(e.target.value)}>
+          {FONT_CHOICES.map(f => (<option key={f.id} value={f.id}>{f.label}</option>))}
+        </select>
 
         <div className="label" style={{marginTop:10}}>Registry</div>
         <div className="row">
@@ -165,7 +186,7 @@ function App() {
                 <input type="checkbox" checked={checked} onChange={(e)=>{
                   setSelectedInd(prev => e.target.checked ? [...prev, it.abbr] : prev.filter(x => x !== it.abbr));
                 }} />
-                <span style={{fontFamily:"ui-monospace",fontSize:13}} title={it.name || it.abbr}>{it.abbr}</span>
+                <span style={{fontFamily: FONT_CHOICES.find(f=>f.id===titleFont)?.css || FONT_CHOICES[0].css, fontSize:13}} title={it.name || it.abbr}>{it.abbr}</span>
               </label>
             );
           })}
@@ -195,8 +216,8 @@ function App() {
                 <path d={FALLBACK_BODY_SHAPES["default"]} fill="#111" />
               )}
             </g>
-            <text x={320} y={110} textAnchor="middle" fontFamily={font} fontSize={28}>{regName}</text>
-            <text x={320} y={130} textAnchor="middle" fontFamily={font} fontSize={40} fontWeight={700}>{callName}</text>
+            <text x={320} y={110} textAnchor="middle" fontFamily={FONT_CHOICES.find(f=>f.id===regFont)?.css || FONT_CHOICES[0].css} fontSize={28}>{regName}</text>
+            <text x={320} y={130} textAnchor="middle" fontFamily={FONT_CHOICES.find(f=>f.id===callFont)?.css || FONT_CHOICES[0].css} fontSize={40} fontWeight={700}>{callName}</text>
           </g>
 
           {cart.map((p, idx) => {
@@ -209,7 +230,7 @@ function App() {
             return (
               <g key={p.id} transform={`translate(${x}, ${y})`}>
                 {C.src ? <image href={C.src} x="0" y="0" width={W} height={H} preserveAspectRatio="xMidYMid meet" /> : <rect x="0" y="0" width={W} height={H} fill="#f8fafc" stroke="#0f172a" rx="12" />}
-                <text x={tx} y={ty} textAnchor="middle" dominantBaseline="middle" fontSize="20" fontFamily="ui-sans-serif">{p.abbr}</text>
+                <text x={tx} y={ty} textAnchor="middle" dominantBaseline="middle" fontSize="20" fontFamily={FONT_CHOICES.find(f=>f.id===titleFont)?.css || FONT_CHOICES[0].css}>{p.abbr}</text>
               </g>
             );
           })}
@@ -223,18 +244,18 @@ function App() {
             <button className="btn" onClick={downloadCart}>Download selection</button>
             <button className="btn" onClick={clearCart}>Clear all</button>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr",gap:6,maxHeight:220,overflow:"auto"}}>
+          <div className="grid" style={{gridTemplateColumns:"1fr",maxHeight:220,overflow:"auto"}}>
             {cart.map(item => (
               <div key={item.id} className="cartRow">
                 <div>
-                  <div style={{fontFamily:"ui-monospace",fontSize:13}}>{item.abbr}</div>
+                  <div style={{fontFamily: FONT_CHOICES.find(f=>f.id===titleFont)?.css || FONT_CHOICES[0].css, fontSize:13}}>{item.abbr}</div>
                   <div className="muted">{item.registry} • {item.sport}</div>
                 </div>
                 <button className="btn" onClick={()=>removeFromCart(item.id)}>Remove</button>
               </div>
             ))}
           </div>
-          <div className="muted" style={{marginTop:6}}>Discontinued/legacy titles remain selectable as long as they exist in your titles files. Use “+ Custom title” to add anything else.</div>
+          <div className="muted" style={{marginTop:6}}>Use different fonts for the Registered name, Call name, and Titles to preview combinations.</div>
         </div>
       </div>
     </div>
