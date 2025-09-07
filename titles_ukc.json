@@ -1,0 +1,23 @@
+{
+  "Rally Obedience": {
+    "individual": [
+      {
+        "abbr": "URO1",
+        "name": "United Rally Obedience 1"
+      },
+      {
+        "abbr": "URO2",
+        "name": "United Rally Obedience 2"
+      }
+    ],
+    "packs": [
+      {
+        "name": "BragPack \u2014 Rally (Core)",
+        "includes": [
+          "URO1",
+          "URO2"
+        ]
+      }
+    ]
+  }
+}

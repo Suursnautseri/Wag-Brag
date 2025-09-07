@@ -1,0 +1,28 @@
+{
+  "Rally": {
+    "individual": [
+      {
+        "abbr": "RN",
+        "name": "Rally Novice"
+      },
+      {
+        "abbr": "RI",
+        "name": "Rally Intermediate"
+      },
+      {
+        "abbr": "RA",
+        "name": "Rally Advanced"
+      }
+    ],
+    "packs": [
+      {
+        "name": "BragPack \u2014 Rally (Starter)",
+        "includes": [
+          "RN",
+          "RI",
+          "RA"
+        ]
+      }
+    ]
+  }
+}

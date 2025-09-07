@@ -1,0 +1,37 @@
+{
+  "giant-schnauzer": {
+    "label": "Giant Schnauzer",
+    "allowedEars": [
+      "natural",
+      "cropped"
+    ],
+    "allowedTails": [
+      "natural",
+      "docked"
+    ],
+    "defaultEar": "natural",
+    "defaultTail": "natural"
+  },
+  "golden-retriever": {
+    "label": "Golden Retriever",
+    "allowedEars": [
+      "natural"
+    ],
+    "allowedTails": [
+      "natural"
+    ],
+    "defaultEar": "natural",
+    "defaultTail": "natural"
+  },
+  "german-shepherd": {
+    "label": "German Shepherd",
+    "allowedEars": [
+      "natural"
+    ],
+    "allowedTails": [
+      "natural"
+    ],
+    "defaultEar": "natural",
+    "defaultTail": "natural"
+  }
+}
