@@ -1,4 +1,12 @@
 {
+  "hearts-paws": {
+    "label": "Hearts & Paws",
+    "src": "connectors/hearts-paws.svg",
+    "width": 200,
+    "height": 140,
+    "textX": 100,
+    "textY": 70
+  },
   "hearts": {
     "label": "Hearts",
     "src": "connectors/hearts.svg",
