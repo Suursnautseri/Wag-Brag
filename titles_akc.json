@@ -6,21 +6,56 @@
         "name": "Rally Novice"
       },
       {
-        "abbr": "RI",
-        "name": "Rally Intermediate"
-      },
-      {
         "abbr": "RA",
         "name": "Rally Advanced"
+      },
+      {
+        "abbr": "RE",
+        "name": "Rally Excellent"
+      },
+      {
+        "abbr": "RM",
+        "name": "Rally Master"
       }
     ],
     "packs": [
       {
-        "name": "BragPack \u2014 Rally (Starter)",
+        "name": "Rally Starter Pack",
         "includes": [
           "RN",
-          "RI",
-          "RA"
+          "RA",
+          "RE"
+        ]
+      }
+    ]
+  },
+  "Obedience": {
+    "individual": [
+      {
+        "abbr": "BN",
+        "name": "Beginner Novice"
+      },
+      {
+        "abbr": "CD",
+        "name": "Companion Dog"
+      },
+      {
+        "abbr": "CDX",
+        "name": "Companion Dog Excellent"
+      },
+      {
+        "abbr": "UD",
+        "name": "Utility Dog"
+      }
+    ],
+    "packs": [
+      {
+        "name": "Obedience Core",
+        "includes": [
+          "BN",
+          "CD",
+          "CDX",
+          "UD"
         ]
       }
     ]

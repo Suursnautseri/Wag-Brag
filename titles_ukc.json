@@ -1,21 +1,47 @@
 {
-  "Rally Obedience": {
+  "Rally": {
     "individual": [
       {
         "abbr": "URO1",
-        "name": "United Rally Obedience 1"
+        "name": "Rally Obedience 1"
       },
       {
         "abbr": "URO2",
-        "name": "United Rally Obedience 2"
+        "name": "Rally Obedience 2"
+      },
+      {
+        "abbr": "URO3",
+        "name": "Rally Obedience 3"
       }
     ],
     "packs": [
       {
-        "name": "BragPack \u2014 Rally (Core)",
+        "name": "UKC Rally Pack",
         "includes": [
           "URO1",
-          "URO2"
+          "URO2",
+          "URO3"
+        ]
+      }
+    ]
+  },
+  "Conformation": {
+    "individual": [
+      {
+        "abbr": "CH",
+        "name": "Champion"
+      },
+      {
+        "abbr": "GRCH",
+        "name": "Grand Champion"
+      }
+    ],
+    "packs": [
+      {
+        "name": "UKC Conformation",
+        "includes": [
+          "CH",
+          "GRCH"
         ]
       }
     ]
