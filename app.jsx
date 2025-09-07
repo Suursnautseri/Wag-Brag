@@ -102,15 +102,7 @@ function EarsOverlay({ option }) {
 function TailOverlay({ option }) {
   if (option === "docked") return (<rect x={560} y={250} width={20} height={20} fill="#111" />);
   if (option === "bobtail") return (<rect x={555} y={250} width={10} height={14} fill="#111" />);
-  return null;
-}
-function CoatLayer({ type }) {
-  if (type === "smooth") return null;
-  const strokes = [];
-  for (let i=0;i<12;i++) {
-    strokes.push(<path key={i} d={`M ${160 + i*30} 300 C ${170 + i*30} 280, ${180 + i*30} 320, ${190 + i*30} 300`} stroke="#222" strokeWidth={type === "wiry" ? 2 : 1} fill="none" />);
-  }
-  return <g>{strokes}</g>;
+  return null; // natural -> none
 }
 
 function App() {
@@ -121,7 +113,6 @@ function App() {
   const [breed, setBreed] = useState(firstBreed);
   const [ears, setEars] = useState(breedMeta[firstBreed]?.defaultEar || "natural");
   const [tail, setTail] = useState(breedMeta[firstBreed]?.defaultTail || "natural");
-  const [coat, setCoat] = useState("smooth");
   const [connector, setConnector] = useState("classic");
   const [callName, setCallName] = useState("Sunny");
   const [regName, setRegName] = useState("Gloris Caramel RN BCAT CGCU TKA ATT");
@@ -223,15 +214,6 @@ function App() {
         </div>
 
         <div className="section">
-          <span className="label">Coat</span>
-          <div className="row" style={{flexWrap:"wrap"}}>
-            {["smooth","rough","wiry"].map(c => (
-              <button key={c} className={"btn " + (coat===c? "active":"")} onClick={()=>setCoat(c)}>{c}</button>
-            ))}
-          </div>
-        </div>
-
-        <div className="section">
           <span className="label">Connector style</span>
           <div className="row" style={{flexWrap:"wrap"}}>
             {["classic","rounded","angular"].map(c => (
@@ -328,45 +310,14 @@ function App() {
           <span className="label">Custom titles</span>
           <div className="row">
             <input placeholder="Enter title (e.g., THDN, BH-VT, RESCUE)" value={customText} onChange={(e)=>setCustomText(e.target.value)} />
-            <button className="btn active" onClick={()=>{
-              const t = (customText || "").toUpperCase().replace(/[^A-Z0-9 .&+\-\/]/g,"").slice(0,14);
-              if (!t) return;
-              const id = `c${Date.now()}`;
-              setCustomPieces(arr => [...arr, { id, x: 680, y: 540, title: t }]);
-              setCustomText("");
-            }}>Add</button>
+            <button className="btn active" onClick={addCustomPiece}>Add</button>
           </div>
           <div className="muted" style={{marginTop:6}}>Auto-uppercase • ~14 chars • allowed: A–Z, 0–9, space, . & + - /</div>
         </div>
 
         <div className="row" style={{flexWrap:"wrap"}}>
-          <button className="btn active" onClick={async()=>{
-            if (!svgRef.current) return;
-            const clone = svgRef.current.cloneNode(true);
-            clone.setAttribute("xmlns","http://www.w3.org/2000/svg");
-            const xml = new XMLSerializer().serializeToString(clone);
-            const a = document.createElement("a");
-            a.href = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(xml);
-            a.download = "wag-and-brag-board.svg";
-            document.body.appendChild(a); a.click(); a.remove();
-          }}>Download SVG</button>
-          <button className="btn" onClick={async()=>{
-            if (!svgRef.current) return;
-            const xml = new XMLSerializer().serializeToString(svgRef.current);
-            const svg64 = btoa(unescape(encodeURIComponent(xml)));
-            const img = new Image();
-            img.onload = () => {
-              const c = document.createElement("canvas");
-              c.width = svgRef.current.viewBox.baseVal.width * 3;
-              c.height = svgRef.current.viewBox.baseVal.height * 3;
-              const ctx = c.getContext("2d");
-              ctx.setTransform(3,0,0,3,0,0);
-              ctx.drawImage(img,0,0);
-              const url = c.toDataURL("image/png");
-              const a = document.createElement("a"); a.href = url; a.download = "wag-and-brag-board.png"; document.body.appendChild(a); a.click(); a.remove();
-            };
-            img.src = "data:image/svg+xml;base64," + svg64;
-          }}>Download PNG</button>
+          <button className="btn active" onClick={handleDownloadSVG}>Download SVG</button>
+          <button className="btn" onClick={handleDownloadPNG}>Download PNG</button>
         </div>
       </div>
 
@@ -381,7 +332,6 @@ function App() {
             <path d={BODY_SHAPES[breed] || BODY_SHAPES["giant-schnauzer"]} fill="#111" />
             <EarsOverlay option={ears} />
             <TailOverlay option={tail} />
-            <CoatLayer type={coat} />
             <text x={320} y={110} textAnchor="middle" fontFamily="ui-sans-serif" fontSize={28}>{regName}</text>
             <text x={320} y={130} textAnchor="middle" fontFamily="ui-sans-serif" fontSize={40} fontWeight={700}>{callName}</text>
           </g>
