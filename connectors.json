@@ -4,23 +4,23 @@
     "src": "connectors/hearts-paws.svg",
     "width": 200,
     "height": 140,
-    "textX": 100.0,
-    "textY": 70.0
+    "textX": 100,
+    "textY": 70
   },
   "hearts": {
     "label": "Hearts",
     "src": "connectors/hearts.svg",
     "width": 180,
     "height": 120,
-    "textX": 90.0,
-    "textY": 60.0
+    "textX": 90,
+    "textY": 60
   },
   "rosette": {
     "label": "Rosette Awards",
     "src": "connectors/rosette.svg",
     "width": 180,
     "height": 180,
-    "textX": 90.0,
-    "textY": 90.0
+    "textX": 90,
+    "textY": 90
   }
 }

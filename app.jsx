@@ -1,5 +1,5 @@
 
-const { useState, useMemo, useEffect, useRef } = React;
+const { useState, useEffect, useRef } = React;
 
 /** Fallback dog shapes if a breed has no custom silhouette */
 const FALLBACK_BODY_SHAPES = {
@@ -7,13 +7,6 @@ const FALLBACK_BODY_SHAPES = {
   "golden-retriever": "M 70 230 C 90 170 160 150 230 145 L 420 145 C 470 145 520 165 545 210 L 565 255 L 605 260 C 625 262 635 282 635 300 L 636 322 C 636 340 625 352 605 352 L 545 352 L 525 420 L 485 420 L 465 352 L 245 352 L 225 420 L 185 420 L 165 352 L 120 352 C 100 352 88 340 88 322 L 88 302 C 88 280 101 265 122 262 L 165 258 Z",
   "german-shepherd": "M 60 235 C 85 170 160 150 235 148 L 420 148 C 485 148 540 170 560 210 L 578 252 L 620 258 C 640 260 650 280 650 298 L 650 318 C 650 340 640 352 620 352 L 560 352 L 540 420 L 500 420 L 480 352 L 255 352 L 230 415 L 190 415 L 170 352 L 120 352 C 100 352 88 340 88 320 L 88 300 C 88 280 100 265 120 262 L 165 258 Z",
 };
-
-/** Small helpers */
-function download(filename, text) {
-  const a = document.createElement("a");
-  a.href = "data:application/json;charset=utf-8," + encodeURIComponent(text);
-  a.download = filename; document.body.appendChild(a); a.click(); a.remove();
-}
 
 /** Main App */
 function App() {
@@ -27,9 +20,9 @@ function App() {
   const [breed, setBreed] = useState("giant-schnauzer");
   const [ears, setEars] = useState("natural");
   const [tail, setTail] = useState("natural");
-  const [facing, setFacing] = useState("right"); // "right" | "left"
-  const [regName, setRegName] = useState("CH Example Kennel's Noble Voyager"); // placeholder
-  const [callName, setCallName] = useState("Sunny"); // placeholder
+  const [facing, setFacing] = useState("right"); // "right" | "left", UI says rotate
+  const [regName, setRegName] = useState("Kennel Name’s Leading by Example"); // sample value
+  const [callName, setCallName] = useState("Call Name: Demo"); // sample value
   const [font, setFont] = useState("ui-sans-serif");
 
   const [registry, setRegistry] = useState("AKC");
@@ -61,7 +54,7 @@ function App() {
       const merged = { AKC: akc || {}, UKC: ukc || {} };
       setTitles(merged);
       setConnectors(conns || {});
-      const firstSport = Object.keys(merged[registry] || {})[0] || "";
+      const firstSport = Object.keys(merged["AKC"] || {}).concat(Object.keys(merged["UKC"] || {}))[0] || "";
       setSport(firstSport);
       if (conns && conns.hearts) setSelConn("hearts");
       else if (conns && Object.keys(conns).length) setSelConn(Object.keys(conns)[0]);
@@ -82,14 +75,13 @@ function App() {
   const allowedTails = meta.allowedTails || ["natural"];
   const dogSil = silhouettes[breed]; // { d, scale/scaleX/scaleY, dx, dy }
 
-  // Facing flip: mirror around the center of dog area (x=320) inside translate(100,60)
-  const centerX = 320;
+  // Flip around center of dog area to simulate left/right orientation
+  const centerX = 320; // box center inside translate(100,60)
   const faceTransform = facing === "left" ? `translate(${centerX},0) scale(-1,1) translate(${-centerX},0)` : "";
 
   function addSelectedTitles() {
     const list = (titles[registry]?.[sport]?.individual || [])
       .filter(it => selectedInd.includes(it.abbr));
-    const useConn = connectors[selConn];
     list.forEach((it, i) => {
       const id = `t-${it.abbr}-${Date.now()}-${i}`;
       setPieces(arr => [...arr, { id, x: 60 + (i % 3) * 200, y: 520 + Math.floor(i/3)*140, title: it.abbr, connector: selConn }]);
@@ -125,10 +117,10 @@ function App() {
         </select>
         <div className="muted" style={{marginTop:6}}>Silhouette source: {dogSil ? "custom (silhouettes.json)" : (FALLBACK_BODY_SHAPES[breed] ? "fallback" : "none")}</div>
 
-        <div className="label">Facing</div>
+        <div className="label">Orientation</div>
         <div className="row">
-          <button className={"btn " + (facing==="right"?"active":"")} onClick={()=>setFacing("right")}>Face Right →</button>
-          <button className={"btn " + (facing==="left"?"active":"")} onClick={()=>setFacing("left")}>← Face Left</button>
+          <button className={"btn " + (facing==="right"?"active":"")} onClick={()=>setFacing("right")}>Rotate Right →</button>
+          <button className={"btn " + (facing==="left"?"active":"")} onClick={()=>setFacing("left")}>← Rotate Left</button>
         </div>
 
         <div className="label">Ears</div>
@@ -137,11 +129,11 @@ function App() {
         <div className="label">Tail</div>
         <div className="row">{allowedTails.map(opt => (<button key={opt} className={"btn " + (tail===opt? "active":"")} onClick={()=>setTail(opt)}>{opt}</button>))}</div>
 
-        <div className="label">Registered name (no titles)</div>
-        <input value={regName} placeholder="e.g., CH Example Kennel's Noble Voyager" onChange={(e)=>setRegName(e.target.value)} />
+        <div className="label">Enter Your Dog's Registered name (no titles)</div>
+        <input value={regName} placeholder="Kennel Name’s Leading by Example" onChange={(e)=>setRegName(e.target.value)} />
 
         <div className="label">Call Name (optional)</div>
-        <input value={callName} placeholder="e.g., Sunny" onChange={(e)=>setCallName(e.target.value)} />
+        <input value={callName} placeholder="Call Name: Demo" onChange={(e)=>setCallName(e.target.value)} />
 
         <div className="label">Connector style</div>
         <div className="row">
@@ -149,9 +141,9 @@ function App() {
             <button key={key} className={"btn " + (selConn===key? "active":"")} onClick={()=>setSelConn(key)}>{c.label || key}</button>
           ))}
         </div>
-        <div className="muted">Now available: Hearts, Rosette Awards. Add more later by editing <code>connectors.json</code>.</div>
+        <div className="muted">Select from your uploaded connector styles. Add more via <code>connectors.json</code>.</div>
 
-        <div className="label" style={{marginTop:10}}>Titles & BragPacks</div>
+        <div className="label" style={{marginTop:10}}>AKC & UKC Titles</div>
         <div className="row" style={{marginBottom:6}}>
           {["AKC","UKC"].map(r => (
             <button key={r} className={"btn " + (registry===r? "active":"")} onClick={()=>{ setRegistry(r); const first = Object.keys(titles[r] || {})[0] || ""; setSport(first); setSelectedInd([]); }}>{r}</button>
@@ -161,7 +153,7 @@ function App() {
           {Object.keys(titles[registry] || {}).map(sp => (<option key={sp} value={sp}>{sp}</option>))}
         </select>
 
-        <div className="muted" style={{marginTop:6}}>Choose individual titles, then "Add selected" to drop pieces using the chosen connector style.</div>
+        <div className="muted" style={{marginTop:6}}>Select as many single titles as you like, then click “Add selected”. BragPacks (by sport) appear if defined in your titles files.</div>
         <div className="grid" style={{marginTop:6}}>
           {(titles[registry]?.[sport]?.individual || []).map(it => {
             const checked = selectedInd.includes(it.abbr);
@@ -179,6 +171,27 @@ function App() {
           <button className="btn active" onClick={addSelectedTitles}>Add selected</button>
           <button className="btn" onClick={()=>setSelectedInd([])}>Clear</button>
         </div>
+
+        {/* Packs list (if present) */}
+        {(titles[registry]?.[sport]?.packs || []).length ? (
+          <div style={{border:"1px solid #e2e8f0", borderRadius:10, padding:10, marginTop:8}}>
+            <div className="label" style={{marginTop:0}}>BragPacks — {sport}</div>
+            {(titles[registry]?.[sport]?.packs || []).map(pk => (
+              <div key={pk.name} style={{display:"flex", justifyContent:"space-between", alignItems:"center", border:"1px solid #e2e8f0", borderRadius:8, padding:"6px 8px", marginBottom:6}}>
+                <div>
+                  <div style={{fontWeight:600}}>{pk.name}</div>
+                  <div className="muted">{(pk.includes || []).join(", ")}</div>
+                </div>
+                <button className="btn" onClick={()=>{
+                  pk.includes.forEach((abbr, i) => {
+                    const id = `p-${abbr}-${Date.now()}-${i}`;
+                    setPieces(arr => [...arr, { id, x: 60 + (i % 3) * 200, y: 520 + Math.floor(i/3)*140, title: abbr, connector: selConn }]);
+                  });
+                }}>Add pack</button>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       {/* Right panel */}
@@ -207,7 +220,7 @@ function App() {
             <text x={320} y={130} textAnchor="middle" fontFamily={font} fontSize={40} fontWeight={700}>{callName}</text>
           </g>
 
-          {/* Connector title pieces */}
+          {/* Title pieces */}
           {pieces.map((p) => {
             const C = connectors[p.connector];
             const W = (C?.width || 180), H = (C?.height || 120);
@@ -223,7 +236,7 @@ function App() {
                 {/* Simple dragging */}
                 <rect x="0" y="0" width={W} height={H} fill="transparent"
                   onPointerDown={(e)=>{
-                    const startX = e.clientX, startY = e.clientY;
+                    let startX = e.clientX, startY = e.clientY;
                     const move = (ev)=>{ movePiece(p.id, ev.clientX - startX, ev.clientY - startY); startX = ev.clientX; startY = ev.clientY; };
                     const up = ()=>{ window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
                     window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);

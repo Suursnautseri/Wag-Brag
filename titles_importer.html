@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wag & Brag — Titles Importer (AKC & UKC)</title>
+<style>
+  body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#f8fafc; color:#0f172a; margin:0; }
+  .wrap { max-width: 1100px; margin: 24px auto; background:#fff; border-radius:12px; box-shadow:0 1px 8px rgba(0,0,0,.06); padding:16px; }
+  h1 { margin: 4px 0 12px; font-size: 20px; }
+  textarea { width:100%; min-height: 220px; border:1px solid #cbd5e1; border-radius:10px; padding:10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .row { display:flex; gap:12px; flex-wrap: wrap; }
+  .col { flex:1 1 480px; }
+  .btn { display:inline-block; margin-top:8px; padding:10px 14px; border-radius:10px; border:1px solid #cbd5e1; background:#0f172a; color:#fff; cursor:pointer; }
+  pre { background:#f1f5f9; padding:10px; border-radius:8px; white-space:pre-wrap; }
+  .muted { color:#64748b; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Wag & Brag — Titles Importer (AKC & UKC)</h1>
+  <p class="muted">Paste text from the official pages and click “Build JSON”. You’ll get <code>titles_akc.json</code> and <code>titles_ukc.json</code> for your app.</p>
+  <ol>
+    <li>Open <a href="https://www.akc.org/sports/titles-and-abbreviations/titles-by-sport/" target="_blank">AKC: Titles by Sport</a>.</li>
+    <li>Press <strong>Ctrl+A</strong> then <strong>Ctrl+C</strong> to copy all page text. Paste it into the AKC box.</li>
+    <li>Open <a href="https://www.ukcdogs.com/titles" target="_blank">UKC: Titles</a>, copy all text, paste into the UKC box.</li>
+  </ol>
+
+  <div class="row">
+    <div class="col">
+      <h3>AKC Page Text</h3>
+      <textarea id="akcText" placeholder="Paste AKC page text here"></textarea>
+    </div>
+    <div class="col">
+      <h3>UKC Page Text</h3>
+      <textarea id="ukcText" placeholder="Paste UKC page text here"></textarea>
+    </div>
+  </div>
+
+  <div style="margin-top:12px">
+    <button class="btn" id="build">Build JSON</button>
+  </div>
+
+  <div id="out" style="display:none; margin-top:12px">
+    <h3>Download Files</h3>
+    <p><a id="dlAKC" class="btn" download="titles_akc.json">Download titles_akc.json</a> <a id="dlUKC" class="btn" download="titles_ukc.json">Download titles_ukc.json</a></p>
+    <h3>Preview</h3>
+    <h4>AKC</h4>
+    <pre id="previewAKC"></pre>
+    <h4>UKC</h4>
+    <pre id="previewUKC"></pre>
+  </div>
+</div>
+
+<script>
+const KNOWN_SPORTS = [
+  "Agility","Obedience","Rally","Tracking","Herding","Scent Work","Trick Dog",
+  "Coursing Ability Test","Fast CAT","Fetch","CGC","FIT DOG",
+  "Conformation","Field Trial","Hunt Test","Dock Diving","Flyball","Lure Coursing"
+];
+
+function parseAKC(text) {
+  const out = {};
+  let currentSport = null;
+  const lines = text.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+  for (const line of lines) {
+    const sport = KNOWN_SPORTS.find(s => line.toLowerCase().includes(s.toLowerCase()));
+    if (sport) { currentSport = sport; if (!out[currentSport]) out[currentSport] = {individual:[], packs:[]}; continue; }
+    if (!currentSport) continue;
+    const m = line.match(/^([A-Z0-9\-+#]+)\s*[:,-]?\s+(.+)$/);
+    if (m) {
+      let abbr = m[1].replace(/\*+$/, "");
+      let name = m[2].replace(/\s*\(.*?\)\s*$/, "").trim();
+      if (abbr.length <= 12 && /^[A-Z0-9\-+#]+$/.test(abbr) && name.length > 1) {
+        const arr = out[currentSport].individual;
+        if (!arr.some(x => x.abbr === abbr)) arr.push({ abbr, name });
+      }
+    }
+  }
+  const packs = [
+    {sport:"Rally", name:"Rally Core", seq:["RN","RA","RE","RM"]},
+    {sport:"Obedience", name:"Obedience Core", seq:["BN","CD","CDX","UD"]},
+    {sport:"Agility", name:"Agility Core", seq:["NA","OA","AX","MX"]},
+    {sport:"Agility", name:"Jumpers Core", seq:["NAJ","OAJ","AXJ","MXJ"]},
+    {sport:"Scent Work", name:"Scent Novice Set", seq:["SCN","SBN","SIN","SEN","SVM"]},
+    {sport:"Trick Dog", name:"Trick Dog Set", seq:["TKN","TKI","TKA","TKP","TKE"]},
+    {sport:"CGC", name:"Canine Good Citizen", seq:["CGC","CGCA","CGCU"]},
+    {sport:"Fast CAT", name:"Fast CAT Milestones", seq:["BCAT","DCAT","FCAT"]},
+    {sport:"Fetch", name:"Fetch Titles", seq:["FTA","FTN","FTR"]}
+  ];
+  for (const pk of packs) {
+    if (out[pk.sport]) {
+      const have = pk.seq.filter(a => out[pk.sport].individual.some(it => it.abbr === a));
+      if (have.length >= 2) out[pk.sport].packs.push({ name: pk.name, includes: have });
+    }
+  }
+  return out;
+}
+
+function parseUKC(text) {
+  const out = {};
+  let currentType = "All Sports";
+  out[currentType] = {individual:[], packs:[]};
+  const lines = text.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+  for (const line of lines) {
+    const m = line.match(/^([U\-A-Z0-9]+)\s+[-:,]?\s+(.+)$/);
+    if (m) {
+      const abbr = m[1].toUpperCase();
+      const name = m[2].replace(/\s*\(.*?\)\s*$/, "").trim();
+      if (/^[U\-A-Z0-9]+$/.test(abbr) && name.length > 1 && abbr.length <= 12) {
+        const arr = out[currentType].individual;
+        if (!arr.some(x => x.abbr === abbr)) arr.push({ abbr, name });
+      }
+    }
+    if (/^(Agility|Obedience|Rally|Conformation|Hunting|Dock|Nose|Scent|Weight|Cart|Drag)/i.test(line)) {
+      currentType = line.replace(/:.*$/,"").trim();
+      if (!out[currentType]) out[currentType] = {individual:[], packs:[]};
+    }
+  }
+  const pkDefs = [
+    {sport:"Agility", name:"UKC Agility Core", seq:["U-AGI","U-AGII","U-ACH","U-ACHX"]},
+    {sport:"Rally", name:"UKC Rally Core", seq:["URO1","URO2","URO3"]},
+    {sport:"Conformation", name:"UKC Conformation", seq:["CH","GRCH"]}
+  ];
+  for (const pk of pkDefs) {
+    if (out[pk.sport]) {
+      const have = pk.seq.filter(a => out[pk.sport].individual.some(it => it.abbr === a));
+      if (have.length >= 2) out[pk.sport].packs.push({ name: pk.name, includes: have });
+    }
+  }
+  return out;
+}
+
+function buildAndDownload(obj, filename, previewEl) {
+  const text = JSON.stringify(obj, null, 2);
+  const url = URL.createObjectURL(new Blob([text], {type:"application/json"}));
+  const a = document.getElementById(filename === "titles_akc.json" ? "dlAKC" : "dlUKC");
+  a.href = url;
+  document.getElementById(previewEl).textContent = text;
+}
+
+document.getElementById("build").addEventListener("click", () => {
+  const akcText = document.getElementById("akcText").value;
+  const ukcText = document.getElementById("ukcText").value;
+  const akc = parseAKC(akcText);
+  const ukc = parseUKC(ukcText);
+  buildAndDownload(akc, "titles_akc.json", "previewAKC");
+  buildAndDownload(ukc, "titles_ukc.json", "previewUKC");
+  document.getElementById("out").style.display = "block";
+});
+</script>
+</body>
+</html>
