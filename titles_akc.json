@@ -1,1 +1,624 @@
-{}
+{
+  "Agility": {
+    "individual": [
+      {
+        "abbr": "JWW",
+        "name": "MXJ\tMaster Excellent Jumper\tMJP\tMaster Excellent Jumper Preferred\tSuffix"
+      },
+      {
+        "abbr": "FAST",
+        "name": "MFB#\tMaster Bronze FAST\tMFPB#\tMaster Bronze FAST Preferred\tSuffix"
+      },
+      {
+        "abbr": "T2B",
+        "name": "T2B#\tTime 2 Beat\tT2BP#\tTime 2 Beat Preferred\tSuffix"
+      }
+    ],
+    "packs": []
+  },
+  "CGC": {
+    "individual": [],
+    "packs": []
+  },
+  "Conformation": {
+    "individual": [
+      {
+        "abbr": "CM#",
+        "name": "Certificate of Merit\tSuffix"
+      },
+      {
+        "abbr": "CH",
+        "name": "Champion\tPrefix"
+      },
+      {
+        "abbr": "GCH",
+        "name": "Grand Champion\tPrefix"
+      },
+      {
+        "abbr": "GCHB",
+        "name": "Grand Champion Bronze\tPrefix"
+      },
+      {
+        "abbr": "GCHS",
+        "name": "Grand Champion Silver\tPrefix"
+      },
+      {
+        "abbr": "GCHG",
+        "name": "Grand Champion Gold\tPrefix"
+      },
+      {
+        "abbr": "GCHP#",
+        "name": "Grand Champion Platinum\tPrefix"
+      },
+      {
+        "abbr": "WC",
+        "name": "Working Certificate\tNovia Scotia Duck Tolling Retriever"
+      },
+      {
+        "abbr": "WCI",
+        "name": "Working Certificate Intermediate\tNovia Scotia Duck Tolling Retriever"
+      },
+      {
+        "abbr": "WCX",
+        "name": "Working Certificate Excellent\tNovia Scotia Duck Tolling Retriever"
+      },
+      {
+        "abbr": "PCJH",
+        "name": "Parent Club Junior Hunter\tPetit Basset Griffon Vendeen"
+      },
+      {
+        "abbr": "PCSH",
+        "name": "Parent Club Senior Hunter\tPetit Basset Griffon Vendeen"
+      },
+      {
+        "abbr": "PCMH",
+        "name": "Parent Club Master Hunter\tPetit Basset Griffon Vendeen"
+      },
+      {
+        "abbr": "SD",
+        "name": "Sled Dog\tSiberian Husky"
+      },
+      {
+        "abbr": "SDX",
+        "name": "Sled Dog Excellent\tSiberian Husky"
+      },
+      {
+        "abbr": "SDO",
+        "name": "Sled Dog Outstanding\tSiberian Husky"
+      },
+      {
+        "abbr": "CS",
+        "name": "Carting Started\tRottweiler"
+      },
+      {
+        "abbr": "CI",
+        "name": "Carting Intermediate\tRottweiler"
+      },
+      {
+        "abbr": "CX",
+        "name": "Carting Excellent\tRottweiler"
+      },
+      {
+        "abbr": "CST",
+        "name": "Carting Started Team\tRottweiler"
+      },
+      {
+        "abbr": "CIT",
+        "name": "Carting Intermediate Team\tRottweiler"
+      },
+      {
+        "abbr": "CXT",
+        "name": "Carting Excellent Team\tRottweiler"
+      },
+      {
+        "abbr": "NDD",
+        "name": "Novice Draft Dog\tBouvier des Flandres, Bernese Mountain Dogs, Belgian Sheepdogs, Briards, Greater Swiss Mountain Dogs, Mastiffs, Leonbergers"
+      },
+      {
+        "abbr": "DD",
+        "name": "Draft Dog\tBouvier des Flandres, Bernese Mountain Dogs, Belgian Sheepdogs, Briards, Greater Swiss Mountain Dogs, Mastiffs, Leonberger, Saint Bernards"
+      },
+      {
+        "abbr": "NBDD",
+        "name": "Novice Brace Draft Dog\tBouvier des Flandres, Bernese Mountain Dogs, Belgian Sheepdogs, Briards, Greater Swiss Mountain Dogs, Mastiffs, Leonberger"
+      },
+      {
+        "abbr": "BDD",
+        "name": "Brace Draft Dog\tBouvier des Flandres, Bernese Mountain Dogs, Belgian Sheepdogs, Briards, Greater Swiss Mountain Dogs, Mastiffs, Leonberger"
+      },
+      {
+        "abbr": "TDD",
+        "name": "Team Draft Dog\tSaint Bernards"
+      }
+    ],
+    "packs": []
+  },
+  "Field Trial": {
+    "individual": [
+      {
+        "abbr": "FC",
+        "name": "Field Champion\tAFC\tAmateur Field Champion"
+      },
+      {
+        "abbr": "FCB",
+        "name": "Field Champion – Brace"
+      },
+      {
+        "abbr": "FCGD",
+        "name": "Field Champion – Gundog"
+      },
+      {
+        "abbr": "FCLP",
+        "name": "Field Champion – Large Pack"
+      },
+      {
+        "abbr": "GFC",
+        "name": "Grand Field Champion\tGAFC\tGrand Amateur Field Champion"
+      },
+      {
+        "abbr": "NFC",
+        "name": "National Field Champion\tNAFC\tNational Amateur Field Champion"
+      },
+      {
+        "abbr": "NGDC",
+        "name": "National Gun Dog Champion\tNAGDC\tNational Amateur Gun Dog Champion"
+      },
+      {
+        "abbr": "NBC",
+        "name": "National Brace Champion"
+      },
+      {
+        "abbr": "NGBC",
+        "name": "National Gun Dog Brace Champion"
+      },
+      {
+        "abbr": "NLPC",
+        "name": "National Large Pack Champion"
+      },
+      {
+        "abbr": "NSPC",
+        "name": "National Small Pack Champion"
+      },
+      {
+        "abbr": "NWGDC",
+        "name": "National Walking Gun Dog Championship"
+      },
+      {
+        "abbr": "QA2",
+        "name": "Qualified All-Age 2"
+      }
+    ],
+    "packs": []
+  },
+  "Coursing Ability Test": {
+    "individual": [
+      {
+        "abbr": "CA",
+        "name": "Coursing Ability"
+      },
+      {
+        "abbr": "CAA",
+        "name": "Courinsg Ability Advanced"
+      },
+      {
+        "abbr": "CAX#",
+        "name": "Coursing Ability Excellent"
+      },
+      {
+        "abbr": "JE",
+        "name": "Junior Earthdog"
+      },
+      {
+        "abbr": "NE",
+        "name": "Novice Earthdog"
+      },
+      {
+        "abbr": "SE",
+        "name": "Senior Earthdog"
+      },
+      {
+        "abbr": "ME",
+        "name": "Master Earthdog"
+      },
+      {
+        "abbr": "EE#",
+        "name": "Endurance Earthdog"
+      },
+      {
+        "abbr": "FDC",
+        "name": "Farm Dog Certified"
+      }
+    ],
+    "packs": []
+  },
+  "Fast CAT": {
+    "individual": [
+      {
+        "abbr": "BCAT",
+        "name": "BCAT"
+      },
+      {
+        "abbr": "DCAT",
+        "name": "DCAT"
+      },
+      {
+        "abbr": "FCAT#",
+        "name": "FCAT"
+      }
+    ],
+    "packs": []
+  },
+  "Fetch": {
+    "individual": [],
+    "packs": []
+  },
+  "FIT DOG": {
+    "individual": [],
+    "packs": []
+  },
+  "Herding": {
+    "individual": [
+      {
+        "abbr": "JH",
+        "name": "Junior Hunter\tSuffix"
+      },
+      {
+        "abbr": "JHA",
+        "name": "Junior Hunter Advanced\tSuffix"
+      },
+      {
+        "abbr": "JHR",
+        "name": "Junior Hunter Retriever\tSuffix"
+      },
+      {
+        "abbr": "JHU",
+        "name": "Junior Hunter Upland\tSuffix"
+      },
+      {
+        "abbr": "JHUA",
+        "name": "Junior Hunter Upland Advanced\tSuffix"
+      },
+      {
+        "abbr": "MH#",
+        "name": "Master Hunter\tSuffix"
+      },
+      {
+        "abbr": "MHA",
+        "name": "Master Hunter Advanced\tSuffix"
+      },
+      {
+        "abbr": "MHR",
+        "name": "Master Hunter Retriever\tSuffix"
+      },
+      {
+        "abbr": "MHU",
+        "name": "Master Hunter Upland\tSuffix"
+      },
+      {
+        "abbr": "MHUA",
+        "name": "Master Hunter Upland Advanced\tSuffix"
+      },
+      {
+        "abbr": "MNH#",
+        "name": "Master National Hunter\tSuffix"
+      },
+      {
+        "abbr": "NTCPC",
+        "name": "National Beagle Two-Couple Pack Champion\tPrefix"
+      },
+      {
+        "abbr": "SH",
+        "name": "Senior Hunter\tSuffix"
+      },
+      {
+        "abbr": "SHA",
+        "name": "Senior Hunter Advanced\tSuffix"
+      },
+      {
+        "abbr": "SHR",
+        "name": "Senior Hunter Retriever\tSuffix"
+      },
+      {
+        "abbr": "SHU",
+        "name": "Senior Hunter Upland\tSuffix"
+      },
+      {
+        "abbr": "SHUA",
+        "name": "Senior Hunter Upland Advanced\tSuffix"
+      }
+    ],
+    "packs": []
+  },
+  "Lure Coursing": {
+    "individual": [],
+    "packs": []
+  },
+  "Obedience": {
+    "individual": [
+      {
+        "abbr": "BN",
+        "name": "Beginner Novice\t\t\tSuffix"
+      },
+      {
+        "abbr": "BN-V#",
+        "name": "Beginner Novice Virtual\t\t\tSuffix"
+      },
+      {
+        "abbr": "GN",
+        "name": "Graduate Novice\t\t\tSuffix"
+      },
+      {
+        "abbr": "GO",
+        "name": "Graduate Open\t\t\tSuffix"
+      },
+      {
+        "abbr": "CD",
+        "name": "Companion Dog\tPCD\tPreferred Companion Dog\tSuffix"
+      },
+      {
+        "abbr": "CD-V#",
+        "name": "Companion Dog Virtual\t\t\tSuffix"
+      },
+      {
+        "abbr": "CDX",
+        "name": "Companion Dog Excellent\tPCDX\tPreferred Companion Dog Excellent\tSuffix"
+      },
+      {
+        "abbr": "UD",
+        "name": "Utlity Dog\tPUTD\tPreferred Utility Dog\tSuffix"
+      },
+      {
+        "abbr": "UDX#",
+        "name": "Utility Dog Excellent\tPUDX#\tPreferred Utility Dog Excellent\tSuffix"
+      },
+      {
+        "abbr": "VER",
+        "name": "Versatility\t\t\tSuffix"
+      },
+      {
+        "abbr": "JFT",
+        "name": "Junior Fur Tracker\tAiredale Terriers"
+      },
+      {
+        "abbr": "SFT",
+        "name": "Senior Fur Tracker\tAiredale Terriers"
+      },
+      {
+        "abbr": "MFT",
+        "name": "Master Fur Tracker\tAiredale Terriers"
+      },
+      {
+        "abbr": "MT",
+        "name": "Man Trailer\tBloodhounds"
+      },
+      {
+        "abbr": "MTI",
+        "name": "Man Trailer Intermediate\tBloodhounds"
+      },
+      {
+        "abbr": "MTX",
+        "name": "Man Trailer Excellent\tBloodhounds"
+      },
+      {
+        "abbr": "HH",
+        "name": "Hunting Hound\tBasset Hounds, Dachshunds"
+      },
+      {
+        "abbr": "SHH",
+        "name": "Senior Hunting Hound\tBasset Hounds, Dachshunds"
+      },
+      {
+        "abbr": "MHH",
+        "name": "Master Hunting Hounds\tBasset Hounds, Dachshunds"
+      },
+      {
+        "abbr": "MHE",
+        "name": "Master Hunting Excellent\tBasset Hounds, Dachshunds"
+      },
+      {
+        "abbr": "CC",
+        "name": "Coaching Certificate\tDalmatian"
+      },
+      {
+        "abbr": "RD",
+        "name": "Road Dog\tDalmatian"
+      },
+      {
+        "abbr": "RDX",
+        "name": "Road Dog Excellent\tDalmatian"
+      },
+      {
+        "abbr": "WAC",
+        "name": "Working Aptitude Certificate\tDoberman Pinschers"
+      },
+      {
+        "abbr": "SCHH1",
+        "name": "Novice Schutzhund\tBeaucerons, Belgian Malinois, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "SCHH2",
+        "name": "Intermediate Schutzhund\tBeaucerons, Belgian Malinois, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "SCHH3",
+        "name": "Master Level Schutzhund\tBeaucerons, Belgian Malinois, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "SCHHA",
+        "name": "Novice Schutzhund A\tBeaucerons, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "TC",
+        "name": "Temperament Certification\tGerman Shepherds"
+      },
+      {
+        "abbr": "VPG1",
+        "name": "Working Versatility Novice\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "VPG2",
+        "name": "Working Versatility Intermediate\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "VPG3",
+        "name": "Working Versatility Master\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "WDS1",
+        "name": "Working Dog Sport 1\tBeaucerons, Doberman Pinschers"
+      },
+      {
+        "abbr": "WDS2",
+        "name": "Working Dog Sport 2\tBeaucerons, Doberman Pinschers"
+      },
+      {
+        "abbr": "WDS3",
+        "name": "Working Dog Sport 3\tBeaucerons, Doberman Pinschers"
+      },
+      {
+        "abbr": "VCD#",
+        "name": "Versatile Companion Dog\tSuffix"
+      },
+      {
+        "abbr": "DC",
+        "name": "Dual Champion\tPrefix"
+      },
+      {
+        "abbr": "VCCH",
+        "name": "Versatile Companion Dog Champion\tPrefix"
+      }
+    ],
+    "packs": []
+  },
+  "Rally": {
+    "individual": [],
+    "packs": []
+  },
+  "Scent Work": {
+    "individual": [
+      {
+        "abbr": "SAR-W",
+        "name": "Search and Rescue – Wilderness"
+      },
+      {
+        "abbr": "SAR-U1",
+        "name": "Search and Rescue – Urban 1"
+      },
+      {
+        "abbr": "SAR-U2",
+        "name": "Search and Rescue – Urban 2"
+      },
+      {
+        "abbr": "SAR-U3",
+        "name": "Search and Rescue – Urban 3"
+      },
+      {
+        "abbr": "STAR",
+        "name": "Puppy Titles"
+      },
+      {
+        "abbr": "STR",
+        "name": "STAR Puppy Title"
+      },
+      {
+        "abbr": "THDN",
+        "name": "Therapy Dog Novice"
+      },
+      {
+        "abbr": "THD",
+        "name": "Therapy Dog"
+      },
+      {
+        "abbr": "THDA",
+        "name": "Therapy Dog Advanced"
+      },
+      {
+        "abbr": "THDX",
+        "name": "Therapy Dog Excellent"
+      },
+      {
+        "abbr": "THDD",
+        "name": "Distinguished Therapy Dog"
+      },
+      {
+        "abbr": "THDS",
+        "name": "Therapy Dog Supreme"
+      }
+    ],
+    "packs": []
+  },
+  "Tracking": {
+    "individual": [
+      {
+        "abbr": "VST#",
+        "name": "Variable Surface Tracker\tSuffix"
+      },
+      {
+        "abbr": "CT",
+        "name": "Champion Tracker\tPrefix"
+      },
+      {
+        "abbr": "IGP1",
+        "name": "International Utility Dog Novice\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "IGP2",
+        "name": "International Utility Dog Intermediate\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "IGP3",
+        "name": "International Utility Dog Master\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "IGP-V",
+        "name": "Basic Utility Dog\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "IPO1",
+        "name": "International Novice Schutzhund\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "IPO2",
+        "name": "International Intermediate Shcutzhund\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "IPO3",
+        "name": "International Master Level Schutzhund\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "TT",
+        "name": "Temperament Test\tAkitas, Alaskan Malamutes, American Eskimos, American Hairless Terriers, American Staffordshire Terriers, Australian Cattle Dogs, Beaucerons, Bedlington Terriers, Belgian Laekenois, Belgian Malinois, Belgian Sheepdogs, Belgian Tervuren, Berger Picards, Black Russian Terriers, Border Collies, Bouvier des Flandres, Bulldogs, Bull Terriers, Cane Corso, Chinese Shar-Pei, Dutch Shepherds, German Pinschers, Giant Schnauzers, Great Danes, Great Pyrenees, Irish Red & White Setters, Kai Kens, Kuvaszok, Leonbergers, Mastiffs, Parson Russell Terriers, Rhodesian Ridgebacks, Rottweilers, Saint Bernards, Saluki, Schipperkes, Staffordshire Bull Terriers, Standard Schnauzers, Welsh Terriers, West Highland White Terriers"
+      }
+    ],
+    "packs": []
+  },
+  "Trick Dog": {
+    "individual": [
+      {
+        "abbr": "AD",
+        "name": "International Endurance Test\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "APR1",
+        "name": "International Working Novice (2 Phase)\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "APR2",
+        "name": "International Working Intermediate (2 Phase)\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "APR3",
+        "name": "International Working Master (2 Phase)\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "BH",
+        "name": "Basic Companion Dog\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      },
+      {
+        "abbr": "BH-VT",
+        "name": "Basic Companion Dog with Traffic Safety\tBeaucerons, Belgian Malinois, Belgian Sheepdogs, Boxers, Bouvier des Flandres, Doberman Pinschers, German Shepherds, Rottweilers"
+      }
+    ],
+    "packs": []
+  }
+}

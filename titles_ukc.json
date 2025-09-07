@@ -1,1 +1,1090 @@
-{}
+{
+  "All Sports": {
+    "individual": [],
+    "packs": []
+  },
+  "Agility": {
+    "individual": [
+      {
+        "abbr": "UGRACH1",
+        "name": "United Grand Agility Champion 1"
+      },
+      {
+        "abbr": "UGRACH",
+        "name": "United Grand Agility Champion"
+      },
+      {
+        "abbr": "UACHX",
+        "name": "United Agility Champion Excellent"
+      },
+      {
+        "abbr": "UACH",
+        "name": "United Agility Champion"
+      },
+      {
+        "abbr": "UAGII",
+        "name": "United Agility II"
+      },
+      {
+        "abbr": "UAGI",
+        "name": "United Agility I"
+      }
+    ],
+    "packs": []
+  },
+  "Conformation (excludes mixed breeds)": {
+    "individual": [
+      {
+        "abbr": "CH",
+        "name": "Champion"
+      },
+      {
+        "abbr": "GRCH",
+        "name": "Grand Champion"
+      },
+      {
+        "abbr": "CCH",
+        "name": "Conformation Champion"
+      },
+      {
+        "abbr": "CGRCH",
+        "name": "Conformation Grand Champion"
+      },
+      {
+        "abbr": "NBOB",
+        "name": "National Best of Breed"
+      },
+      {
+        "abbr": "NGRCH",
+        "name": "National Grand Champion"
+      },
+      {
+        "abbr": "EGCH",
+        "name": "Emerald Grand Champion"
+      },
+      {
+        "abbr": "RGCH",
+        "name": "Ruby Grand Champion"
+      },
+      {
+        "abbr": "SGCH",
+        "name": "Sapphire Grand Champion"
+      },
+      {
+        "abbr": "DGCH",
+        "name": "Diamond Grand Champion"
+      },
+      {
+        "abbr": "ALCH",
+        "name": "Altered Champion"
+      },
+      {
+        "abbr": "ALGRCH",
+        "name": "Altered Grand Champion"
+      },
+      {
+        "abbr": "ALCCH",
+        "name": "Altered Conformation Champion"
+      },
+      {
+        "abbr": "ALCGRCH",
+        "name": "Altered Conformation Grand Champion"
+      },
+      {
+        "abbr": "AEGCH",
+        "name": "Altered Emerald Grand Champion"
+      },
+      {
+        "abbr": "ARGCH",
+        "name": "Altered Ruby Grand Champion"
+      },
+      {
+        "abbr": "ASGCH",
+        "name": "Altered Sapphire Grand Champion"
+      },
+      {
+        "abbr": "ADGCH",
+        "name": "Altered Diamond Grand Champion"
+      }
+    ],
+    "packs": []
+  },
+  "Dock Jumping (Air Dog)": {
+    "individual": [
+      {
+        "abbr": "UUJ",
+        "name": "United Ultimate Jumper"
+      },
+      {
+        "abbr": "UMJ",
+        "name": "United Master Jumper"
+      },
+      {
+        "abbr": "USJ",
+        "name": "United Senior Jumper"
+      },
+      {
+        "abbr": "UJJ",
+        "name": "United Junior Jumper"
+      },
+      {
+        "abbr": "UNJ",
+        "name": "United Novice Jumper"
+      },
+      {
+        "abbr": "UUJCH",
+        "name": "United Ultimate Jumper Champion"
+      },
+      {
+        "abbr": "UMJCH",
+        "name": "United Master Jumper Champion"
+      },
+      {
+        "abbr": "USJCH",
+        "name": "United Senior Jumper Champion"
+      },
+      {
+        "abbr": "UJJCH",
+        "name": "United Junior Jumper Champion"
+      },
+      {
+        "abbr": "UNJCH",
+        "name": "United Novice Jumper Champion"
+      },
+      {
+        "abbr": "GUJCH",
+        "name": "Grand Ultimate Jumper Champion"
+      },
+      {
+        "abbr": "GMJCH",
+        "name": "Grand Master Jumper Champion"
+      },
+      {
+        "abbr": "GSJCH",
+        "name": "Grand Senior Jumper Champion"
+      },
+      {
+        "abbr": "GJJCH",
+        "name": "Grand Junior Jumper Champion"
+      },
+      {
+        "abbr": "GNJCH",
+        "name": "Grand Novice Jumper Champion"
+      },
+      {
+        "abbr": "URUV",
+        "name": "United Radical Ultimate Vertical"
+      },
+      {
+        "abbr": "USUV",
+        "name": "United Supreme Ultimate Vertical"
+      },
+      {
+        "abbr": "URUVCH",
+        "name": "United Radical Ultimate Vertical Champion"
+      },
+      {
+        "abbr": "USUVCH",
+        "name": "United Supreme Ultimate Vertical Champion"
+      },
+      {
+        "abbr": "GRUVCH",
+        "name": "United Grand Radical Ultimate Vertical Champion"
+      },
+      {
+        "abbr": "GSUVCH",
+        "name": "United Grand Supreme Ultimate Vertical Champion"
+      },
+      {
+        "abbr": "UUF",
+        "name": "United Ultimate Fetch It"
+      },
+      {
+        "abbr": "USF",
+        "name": "United Supreme Fetch It"
+      },
+      {
+        "abbr": "UUFCH",
+        "name": "United Ultimate Fetch It Champion"
+      },
+      {
+        "abbr": "USFCH",
+        "name": "United Supreme Fetch It Champion"
+      },
+      {
+        "abbr": "GUFCH",
+        "name": "United Grand Ultimate Fetch It Champion"
+      },
+      {
+        "abbr": "GSFCH",
+        "name": "United Grand Supreme Fetch It Champion"
+      },
+      {
+        "abbr": "SGC",
+        "name": "Supreme Grand Coursing Champion"
+      },
+      {
+        "abbr": "GCB",
+        "name": "Grand Lure Coursing Champion-Breed"
+      },
+      {
+        "abbr": "CCB",
+        "name": "Lure Coursing Champion-Breed"
+      },
+      {
+        "abbr": "GCM",
+        "name": "Grand Lure Coursing Champion-Mixed"
+      },
+      {
+        "abbr": "CCM",
+        "name": "Lure Coursing Champion-Mixed"
+      },
+      {
+        "abbr": "CTS",
+        "name": "Coursing Tested Supreme"
+      },
+      {
+        "abbr": "CTX",
+        "name": "Coursing Tested Excellent"
+      },
+      {
+        "abbr": "CT",
+        "name": "Coursing Tested"
+      },
+      {
+        "abbr": "CAS",
+        "name": "Coursing Aptitude Supreme"
+      },
+      {
+        "abbr": "CAX",
+        "name": "Coursing Aptitude Excellent"
+      },
+      {
+        "abbr": "CA",
+        "name": "Coursing Aptitude"
+      }
+    ],
+    "packs": []
+  },
+  "Nosework": {
+    "individual": [],
+    "packs": []
+  },
+  "Nosework Trial Levels": {
+    "individual": [
+      {
+        "abbr": "EN",
+        "name": "Elite Nosework"
+      },
+      {
+        "abbr": "MN",
+        "name": "Master Nosework"
+      },
+      {
+        "abbr": "SN",
+        "name": "Superior Nosework"
+      },
+      {
+        "abbr": "AN",
+        "name": "Advanced Nosework"
+      },
+      {
+        "abbr": "NN",
+        "name": "Novice Nosework"
+      }
+    ],
+    "packs": []
+  },
+  "Nosework Champion Titles": {
+    "individual": [
+      {
+        "abbr": "NCH",
+        "name": "Nosework Champion"
+      },
+      {
+        "abbr": "ECH",
+        "name": "Elite Nosework Campion"
+      },
+      {
+        "abbr": "MCH",
+        "name": "Master Nosework Champion"
+      },
+      {
+        "abbr": "SCH",
+        "name": "Superior Nosework Champion"
+      },
+      {
+        "abbr": "ACH",
+        "name": "Advanced Nosework Champion"
+      },
+      {
+        "abbr": "NNCH",
+        "name": "Novice Nosework Champion"
+      }
+    ],
+    "packs": []
+  },
+  "Nosework Grand Champion Titles": {
+    "individual": [
+      {
+        "abbr": "NWGC",
+        "name": "Nosework Grand Champion"
+      },
+      {
+        "abbr": "EGC",
+        "name": "Elite Nosework Grand Champion"
+      },
+      {
+        "abbr": "MGC",
+        "name": "Master Nosework Grand Champion"
+      },
+      {
+        "abbr": "SNGC",
+        "name": "Superior Nosework Grand Champion"
+      },
+      {
+        "abbr": "AGC",
+        "name": "Advanced Nosework Grand Champion"
+      },
+      {
+        "abbr": "NGC",
+        "name": "Novice Nosework Grand Champion"
+      },
+      {
+        "abbr": "EE",
+        "name": "Elite Exterior"
+      },
+      {
+        "abbr": "EV",
+        "name": "Elite Vehicle"
+      },
+      {
+        "abbr": "EI",
+        "name": "Elite Interior"
+      },
+      {
+        "abbr": "EC",
+        "name": "Elite Container"
+      },
+      {
+        "abbr": "ME",
+        "name": "Master Exterior"
+      },
+      {
+        "abbr": "MV",
+        "name": "Master Vehicle"
+      },
+      {
+        "abbr": "MI",
+        "name": "Master Interior"
+      },
+      {
+        "abbr": "MC",
+        "name": "Master Container"
+      },
+      {
+        "abbr": "SE",
+        "name": "Superior Exterior"
+      },
+      {
+        "abbr": "SV",
+        "name": "Superior Vehicle"
+      },
+      {
+        "abbr": "SI",
+        "name": "Superior Interior"
+      },
+      {
+        "abbr": "SC",
+        "name": "Superior Container"
+      },
+      {
+        "abbr": "AE",
+        "name": "Advanced Exterior"
+      },
+      {
+        "abbr": "AV",
+        "name": "Advanced Vehicle"
+      },
+      {
+        "abbr": "AI",
+        "name": "Advanced Interior"
+      },
+      {
+        "abbr": "AC",
+        "name": "Advanced Container"
+      },
+      {
+        "abbr": "NE",
+        "name": "Novice Exterior"
+      },
+      {
+        "abbr": "NV",
+        "name": "Novice Vehicle"
+      },
+      {
+        "abbr": "NI",
+        "name": "Novice Interior"
+      },
+      {
+        "abbr": "NC",
+        "name": "Novice Container"
+      },
+      {
+        "abbr": "HDGC",
+        "name": "Handler Discrimination Grand Champion"
+      },
+      {
+        "abbr": "HDCH",
+        "name": "Handler Discrimination Champion"
+      },
+      {
+        "abbr": "MHDX",
+        "name": "Master Handler Discrimination Excellent"
+      },
+      {
+        "abbr": "EHDS",
+        "name": "Excellent Handler Discrimination Supreme"
+      },
+      {
+        "abbr": "MHD",
+        "name": "Master Handler Discrimination"
+      },
+      {
+        "abbr": "EHD",
+        "name": "Excellent Handler Discrimination"
+      },
+      {
+        "abbr": "AHD",
+        "name": "Advanced Handler Discrimination"
+      },
+      {
+        "abbr": "NHD",
+        "name": "Novice Handler Discrimination"
+      }
+    ],
+    "packs": []
+  },
+  "Obedience": {
+    "individual": [
+      {
+        "abbr": "UUDX",
+        "name": "United Utility Dog Excellent"
+      },
+      {
+        "abbr": "GOCH",
+        "name": "United Grand Obedience Champion"
+      },
+      {
+        "abbr": "UOCH",
+        "name": "United Obedience Champion"
+      },
+      {
+        "abbr": "UUD",
+        "name": "United Utility Dog"
+      },
+      {
+        "abbr": "UCDX",
+        "name": "United Companion Dog Excellent"
+      },
+      {
+        "abbr": "UCD",
+        "name": "United Companion Dog"
+      }
+    ],
+    "packs": []
+  },
+  "Rally Obedience": {
+    "individual": [
+      {
+        "abbr": "UROG",
+        "name": "United Rally Obedience Grand Champion"
+      },
+      {
+        "abbr": "URX",
+        "name": "United Rally Obedience Excellent"
+      },
+      {
+        "abbr": "UROC",
+        "name": "United Rally Obedience Champion"
+      },
+      {
+        "abbr": "URO3",
+        "name": "United Rally Obedience 3"
+      },
+      {
+        "abbr": "URO2",
+        "name": "United Rally Obedience 2"
+      },
+      {
+        "abbr": "URO1",
+        "name": "United Rally Obedience 1"
+      },
+      {
+        "abbr": "SPOT-ON",
+        "name": "Specialized Pet Obedience Test - Outstanding Neighbor"
+      },
+      {
+        "abbr": "SPOT",
+        "name": "Specialized Pet Obedience Test"
+      }
+    ],
+    "packs": []
+  },
+  "Weight Pull": {
+    "individual": [
+      {
+        "abbr": "UGWPC1",
+        "name": "United Grand Weight Pull Champion 1"
+      },
+      {
+        "abbr": "UGWPCH",
+        "name": "United Grand Weight Pull Champion"
+      },
+      {
+        "abbr": "UWPCHX",
+        "name": "United Weight Pull Champion Excellent"
+      },
+      {
+        "abbr": "UWPCH",
+        "name": "United Weight Pull Champion"
+      },
+      {
+        "abbr": "UWP",
+        "name": "United Weight Puller"
+      },
+      {
+        "abbr": "UWPS",
+        "name": "United Weight Pull Champion Supreme"
+      },
+      {
+        "abbr": "UWPO",
+        "name": "United Weight Pull Champion Outstanding"
+      },
+      {
+        "abbr": "UWPV",
+        "name": "United Weight Pull Champion Versatile"
+      },
+      {
+        "abbr": "UWPU",
+        "name": "United Weight Pull Ultimate"
+      },
+      {
+        "abbr": "UWPNC1",
+        "name": "United Weight Pull National Champion Division 1"
+      },
+      {
+        "abbr": "UWPNC2",
+        "name": "United Weight Pull National Champion Division 2"
+      },
+      {
+        "abbr": "UEWPCH",
+        "name": "United Elite Weight Pull Champion"
+      },
+      {
+        "abbr": "VPN",
+        "name": "Versatile Puller Novice"
+      },
+      {
+        "abbr": "VPA",
+        "name": "Versatile Puller Advanced"
+      },
+      {
+        "abbr": "VPE",
+        "name": "Versatile Puller Excellent"
+      },
+      {
+        "abbr": "VPU",
+        "name": "Versatile Puller Ultimate"
+      },
+      {
+        "abbr": "AP",
+        "name": "Advanced Puller"
+      },
+      {
+        "abbr": "RATCHX",
+        "name": "Barn Hunt Champion Excellent"
+      },
+      {
+        "abbr": "RATCH",
+        "name": "Barn Hunt Champion"
+      },
+      {
+        "abbr": "RATM",
+        "name": "Master Barn Hunt"
+      },
+      {
+        "abbr": "RATS",
+        "name": "Senior Barn Hunt"
+      },
+      {
+        "abbr": "RATO",
+        "name": "Open Barn Hunt"
+      },
+      {
+        "abbr": "RATN",
+        "name": "Novice Barn Hunt"
+      },
+      {
+        "abbr": "WSHOWCH2",
+        "name": "Hunting Beagle World Show Champion 2X"
+      },
+      {
+        "abbr": "WSHOWCH",
+        "name": "Hunting Beagle World Show Champion"
+      },
+      {
+        "abbr": "NGRC",
+        "name": "National Grand Show Champion"
+      },
+      {
+        "abbr": "GRCH",
+        "name": "Grand Show Champion"
+      },
+      {
+        "abbr": "CH",
+        "name": "Show Champion"
+      }
+    ],
+    "packs": []
+  },
+  "Hunting Beagle Event": {
+    "individual": [
+      {
+        "abbr": "WORLDHBCH",
+        "name": "World Hunting Beagle Champion"
+      },
+      {
+        "abbr": "NGRHBC",
+        "name": "National Grand Hunting Beagle Champion"
+      },
+      {
+        "abbr": "GRHBCH",
+        "name": "Grand Hunting Beagle Champion"
+      },
+      {
+        "abbr": "HBCH",
+        "name": "Hunting Beagle Champion"
+      },
+      {
+        "abbr": "GRFCH",
+        "name": "Grand Field Champion"
+      },
+      {
+        "abbr": "FCH",
+        "name": "Field Champion"
+      },
+      {
+        "abbr": "WORLDPCH2X",
+        "name": "World Performance Pack Champion 2X"
+      },
+      {
+        "abbr": "WORLDPCH",
+        "name": "World Performance Pack Champion"
+      },
+      {
+        "abbr": "GRPCH",
+        "name": "Grand Performance Pack Champion"
+      },
+      {
+        "abbr": "PCH",
+        "name": "Performance Pack Champion"
+      },
+      {
+        "abbr": "WSHOWCH",
+        "name": "World Show Champion"
+      },
+      {
+        "abbr": "WSHOWCH2X",
+        "name": "World Show Champion2X"
+      },
+      {
+        "abbr": "NGRCH",
+        "name": "National Grand Show Champion"
+      },
+      {
+        "abbr": "NGRCH2X",
+        "name": "National Grand Show Champion 2X"
+      },
+      {
+        "abbr": "GRCH",
+        "name": "Grand Show Champion"
+      },
+      {
+        "abbr": "CH",
+        "name": "Show Champion"
+      },
+      {
+        "abbr": "GRCHHOF",
+        "name": "Grand Champion Hall of Fame"
+      },
+      {
+        "abbr": "GRFCHHOF",
+        "name": "Grand Field Champion Hall of Fame"
+      },
+      {
+        "abbr": "HTX",
+        "name": "Hunt Test Excellence"
+      },
+      {
+        "abbr": "WLDNITECH",
+        "name": "World Nite Hunt Champion"
+      },
+      {
+        "abbr": "NATLDC",
+        "name": "National Dual Champion"
+      },
+      {
+        "abbr": "NGRNCH",
+        "name": "National Grand Nite Champion"
+      },
+      {
+        "abbr": "GRNITECH",
+        "name": "Grand Nite Champion"
+      },
+      {
+        "abbr": "NITECH",
+        "name": "Nite Champion"
+      },
+      {
+        "abbr": "GRNITECHHOF",
+        "name": "Grand Nite Champion Hall of Fame"
+      },
+      {
+        "abbr": "GRWCH",
+        "name": "Grand Water Champion"
+      },
+      {
+        "abbr": "WCH",
+        "name": "Water Champion"
+      },
+      {
+        "abbr": "GRWCHHOF",
+        "name": "Grand Water Champion Hall of Fame"
+      },
+      {
+        "abbr": "GRSQCH",
+        "name": "Grand Squirrel Champion"
+      },
+      {
+        "abbr": "SQCH",
+        "name": "Squirrel Champion"
+      },
+      {
+        "abbr": "GRSQCHHOF",
+        "name": "Grand Squirrel Champion Hall of Fame"
+      }
+    ],
+    "packs": []
+  },
+  "Hunting Retriever Events": {
+    "individual": [
+      {
+        "abbr": "GRHRCH",
+        "name": "Grand Hunting Retriever Champion"
+      },
+      {
+        "abbr": "HRCH",
+        "name": "Hunting Retriever Champion"
+      },
+      {
+        "abbr": "HR",
+        "name": "Hunting Retriever"
+      },
+      {
+        "abbr": "SHR",
+        "name": "Started Hunting Retriever"
+      },
+      {
+        "abbr": "UH",
+        "name": "Upland Hunter"
+      },
+      {
+        "abbr": "GRCHF",
+        "name": "Grand Champion of the Field"
+      },
+      {
+        "abbr": "CHF",
+        "name": "Champion of the Field"
+      },
+      {
+        "abbr": "TR",
+        "name": "Trialer"
+      },
+      {
+        "abbr": "GUN",
+        "name": "Gun Dog"
+      },
+      {
+        "abbr": "HUNT",
+        "name": "1st Level Gun Dog"
+      },
+      {
+        "abbr": "CHF-W",
+        "name": "Champion of the Field-Wild"
+      },
+      {
+        "abbr": "CHF-L",
+        "name": "Champion of the Field-Liberated"
+      },
+      {
+        "abbr": "ESD",
+        "name": "Elite Shed Dog"
+      },
+      {
+        "abbr": "WSD",
+        "name": "Working Shed Dog"
+      },
+      {
+        "abbr": "CHSD",
+        "name": "Champion Shed Dog"
+      },
+      {
+        "abbr": "GRCHSD",
+        "name": "Grand Champion Shed Dog"
+      },
+      {
+        "abbr": "NCHSD",
+        "name": "National Champion Shed Dog"
+      },
+      {
+        "abbr": "CPR",
+        "name": "Certified Pointing Retriever"
+      },
+      {
+        "abbr": "APR",
+        "name": "Advanced Pointing Retriever"
+      },
+      {
+        "abbr": "MPR",
+        "name": "Master Pointing Retriever"
+      },
+      {
+        "abbr": "GMPR",
+        "name": "Grand Master Pointing Retriever"
+      },
+      {
+        "abbr": "NTLCH",
+        "name": "NSTRA National Champion"
+      },
+      {
+        "abbr": "RUNTLCH",
+        "name": "NSTRA Runner Up National Champion"
+      },
+      {
+        "abbr": "REGCH",
+        "name": "NSTRA Regional Champion"
+      },
+      {
+        "abbr": "CH",
+        "name": "NSTRA Champion"
+      },
+      {
+        "abbr": "AMCH",
+        "name": "NSTRA Amateur Champion"
+      },
+      {
+        "abbr": "SRSC",
+        "name": "SRS Champion"
+      },
+      {
+        "abbr": "SRSAC",
+        "name": "SRS Amateur Champion"
+      },
+      {
+        "abbr": "SRSCC",
+        "name": "SRS Crown Champion"
+      },
+      {
+        "abbr": "SRSACC",
+        "name": "SRS Amateur Crown Champion"
+      },
+      {
+        "abbr": "GRTRCH",
+        "name": "Grand Tree Champion"
+      },
+      {
+        "abbr": "TRCH",
+        "name": "Tree Champion"
+      },
+      {
+        "abbr": "PTE",
+        "name": "Pre-Trial Elite"
+      },
+      {
+        "abbr": "PTM",
+        "name": "Pre-Trial Master"
+      },
+      {
+        "abbr": "PTS",
+        "name": "Pre-Trial Superior"
+      },
+      {
+        "abbr": "PTA",
+        "name": "Pre-Trial Advanced"
+      },
+      {
+        "abbr": "PTN",
+        "name": "Pre-Trial Novice"
+      },
+      {
+        "abbr": "OBPD2",
+        "name": "Police Dog 2 Obedience"
+      },
+      {
+        "abbr": "OBPD1",
+        "name": "Police Dog 1 Obedience"
+      },
+      {
+        "abbr": "PD2",
+        "name": "Police Dog 2"
+      },
+      {
+        "abbr": "PD1",
+        "name": "Police Dog 1"
+      },
+      {
+        "abbr": "OB3",
+        "name": "Protection 3 Obedience"
+      },
+      {
+        "abbr": "OB2",
+        "name": "Protection 2 Obedience"
+      },
+      {
+        "abbr": "OB1",
+        "name": "Protection Alert 1 Obedience"
+      },
+      {
+        "abbr": "AOB",
+        "name": "Protection Alert Obedience"
+      },
+      {
+        "abbr": "P3",
+        "name": "Protection 3"
+      },
+      {
+        "abbr": "P2",
+        "name": "Protection 2"
+      },
+      {
+        "abbr": "P1",
+        "name": "Protection 1"
+      },
+      {
+        "abbr": "PA",
+        "name": "Protection Alert"
+      },
+      {
+        "abbr": "FO",
+        "name": "Family Obedience"
+      },
+      {
+        "abbr": "GREWCH",
+        "name": "Grand Earth Work Champion"
+      },
+      {
+        "abbr": "EWCH",
+        "name": "Earth Work Champion"
+      },
+      {
+        "abbr": "EWDII",
+        "name": "Earth Working Dog 2"
+      },
+      {
+        "abbr": "EWDI",
+        "name": "Earth Working Dog 1"
+      }
+    ],
+    "packs": []
+  },
+  "Drag Racing": {
+    "individual": [
+      {
+        "abbr": "UFGCH",
+        "name": "United Flat Racer Grand Champion"
+      },
+      {
+        "abbr": "UFCH",
+        "name": "United Flat Racer Champion"
+      },
+      {
+        "abbr": "UFR",
+        "name": "United Flat Racer"
+      },
+      {
+        "abbr": "UFA",
+        "name": "United Flat Racing Aptitude Test"
+      },
+      {
+        "abbr": "USGCH",
+        "name": "United Steeplechase Grand Champion"
+      },
+      {
+        "abbr": "USCH",
+        "name": "United Steeplechase Racer Champion"
+      },
+      {
+        "abbr": "USR",
+        "name": "United Steeplechase Racer"
+      },
+      {
+        "abbr": "USA",
+        "name": "United Steeplechase Racing Aptitude Test"
+      }
+    ],
+    "packs": []
+  },
+  "Hunting Beagle Champion": {
+    "individual": [],
+    "packs": []
+  },
+  "Conformation Champion": {
+    "individual": [],
+    "packs": []
+  },
+  "Conformation (Coonhounds, Beagles, Cur/Feists)": {
+    "individual": [],
+    "packs": []
+  },
+  "Conformation Grand Champion": {
+    "individual": [],
+    "packs": []
+  },
+  "Conformation": {
+    "individual": [],
+    "packs": []
+  },
+  "Hunting Retriever": {
+    "individual": [],
+    "packs": []
+  },
+  "Dock Jumping": {
+    "individual": [],
+    "packs": []
+  },
+  "Hunting Retriever Champion": {
+    "individual": [],
+    "packs": []
+  },
+  "Nosework Grand Champion": {
+    "individual": [],
+    "packs": []
+  },
+  "Nosework Champion": {
+    "individual": [],
+    "packs": []
+  },
+  "Drag Racing (Discontinued)": {
+    "individual": [],
+    "packs": []
+  },
+  "Weight Pull (Discontinued Title)": {
+    "individual": [],
+    "packs": []
+  },
+  "Weight Puller Novice": {
+    "individual": [],
+    "packs": []
+  }
+}
