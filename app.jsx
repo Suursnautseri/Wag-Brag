@@ -16,6 +16,9 @@ const FONT_CHOICES = [
   { id: "roboto-slab", label: "Roboto Slab (serif)", css: "'Roboto Slab', ui-serif, Georgia, serif" }
 ];
 
+// dark yellow used on all connector "sign" text
+const SIGN_TEXT_COLOR = "#B8860B"; // DarkGoldenRod; tweakable
+
 function App() {
   const [breedMeta, setBreedMeta] = useState({});
   const [silhouettes, setSilhouettes] = useState({});
@@ -73,7 +76,6 @@ function App() {
   const allowedTails = meta.allowedTails || ["natural"];
   const dogSil = silhouettes[breed];
   const centerX = 320;
-  const faceTransform = facing === "left" ? `translate(${centerX},0) scale(-1,1) translate(${-centerX},0)` : "";
 
   function addSelectedToCart() {
     const list = (titles[registry]?.[sport]?.individual || [])
@@ -124,6 +126,7 @@ function App() {
         .cartRow{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px solid #e2e8f0;border-radius:10px;padding:6px 8px}
       `}</style>
 
+      {/* Left controls */}
       <div className="panel">
         <h1 style={{fontSize:22,fontWeight:700,margin:"2px 0 14px"}}>Wag &amp; Brag — Builder</h1>
 
@@ -150,6 +153,7 @@ function App() {
         <div className="label">Call Name (optional)</div>
         <input value={callName} placeholder="Call Name: Demo" onChange={(e)=>setCallName(e.target.value)} />
 
+        {/* Font pickers */}
         <div className="label">Registered Name Font</div>
         <select value={regFont} onChange={(e)=>setRegFont(e.target.value)}>
           {FONT_CHOICES.map(f => (<option key={f.id} value={f.id}>{f.label}</option>))}
@@ -186,7 +190,7 @@ function App() {
                 <input type="checkbox" checked={checked} onChange={(e)=>{
                   setSelectedInd(prev => e.target.checked ? [...prev, it.abbr] : prev.filter(x => x !== it.abbr));
                 }} />
-                <span style={{fontFamily: FONT_CHOICES.find(f=>f.id===titleFont)?.css || FONT_CHOICES[0].css, fontSize:13}} title={it.name || it.abbr}>{it.abbr}</span>
+                <span style={{fontFamily: fontCSS(titleFont), fontSize:13}} title={it.name || it.abbr}>{it.abbr}</span>
               </label>
             );
           })}
@@ -199,6 +203,7 @@ function App() {
         </div>
       </div>
 
+      {/* Right: preview + cart */}
       <div className="panel">
         <svg width={900} height={520} viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
           <rect x={0} y={0} width={900} height={520} fill="#ffffff" />
@@ -208,16 +213,16 @@ function App() {
           </g>
           <g transform="translate(100,40)">
             <g transform={facing === "left" ? `translate(${320},0) scale(-1,1) translate(${-320},0)` : ""}>
-              {dogSil ? (
-                <g transform={`translate(${dogSil.dx || 0},${dogSil.dy || 0}) scale(${(dogSil.scaleX ?? dogSil.scale ?? 1)}, ${(dogSil.scaleY ?? dogSil.scale ?? 1)})`}>
-                  <path d={dogSil.d} fill="#111" />
+              {silhouettes[breed] ? (
+                <g transform={`translate(${silhouettes[breed].dx || 0},${silhouettes[breed].dy || 0}) scale(${(silhouettes[breed].scaleX ?? silhouettes[breed].scale ?? 1)}, ${(silhouettes[breed].scaleY ?? silhouettes[breed].scale ?? 1)})`}>
+                  <path d={silhouettes[breed].d} fill="#111" />
                 </g>
               ) : (
                 <path d={FALLBACK_BODY_SHAPES["default"]} fill="#111" />
               )}
             </g>
-            <text x={320} y={110} textAnchor="middle" fontFamily={FONT_CHOICES.find(f=>f.id===regFont)?.css || FONT_CHOICES[0].css} fontSize={28}>{regName}</text>
-            <text x={320} y={130} textAnchor="middle" fontFamily={FONT_CHOICES.find(f=>f.id===callFont)?.css || FONT_CHOICES[0].css} fontSize={40} fontWeight={700}>{callName}</text>
+            <text x={320} y={110} textAnchor="middle" fontFamily={fontCSS(regFont)} fontSize={28}>{regName}</text>
+            <text x={320} y={130} textAnchor="middle" fontFamily={fontCSS(callFont)} fontSize={40} fontWeight={700}>{callName}</text>
           </g>
 
           {cart.map((p, idx) => {
@@ -227,10 +232,11 @@ function App() {
             const perRow = Math.max(1, Math.floor(760 / (W + 20)));
             const x = 60 + (idx % perRow) * (W + 20);
             const y = 340 + Math.floor(idx / perRow) * (H + 20);
+            const color = C.textColor || SIGN_TEXT_COLOR;
             return (
               <g key={p.id} transform={`translate(${x}, ${y})`}>
                 {C.src ? <image href={C.src} x="0" y="0" width={W} height={H} preserveAspectRatio="xMidYMid meet" /> : <rect x="0" y="0" width={W} height={H} fill="#f8fafc" stroke="#0f172a" rx="12" />}
-                <text x={tx} y={ty} textAnchor="middle" dominantBaseline="middle" fontSize="20" fontFamily={FONT_CHOICES.find(f=>f.id===titleFont)?.css || FONT_CHOICES[0].css}>{p.abbr}</text>
+                <text x={tx} y={ty} textAnchor="middle" dominantBaseline="middle" fontSize="20" fontFamily={fontCSS(titleFont)} fill={color}>{p.abbr}</text>
               </g>
             );
           })}
@@ -248,14 +254,14 @@ function App() {
             {cart.map(item => (
               <div key={item.id} className="cartRow">
                 <div>
-                  <div style={{fontFamily: FONT_CHOICES.find(f=>f.id===titleFont)?.css || FONT_CHOICES[0].css, fontSize:13}}>{item.abbr}</div>
+                  <div style={{fontFamily: fontCSS(titleFont), fontSize:13, color: SIGN_TEXT_COLOR}}>{item.abbr}</div>
                   <div className="muted">{item.registry} • {item.sport}</div>
                 </div>
                 <button className="btn" onClick={()=>removeFromCart(item.id)}>Remove</button>
               </div>
             ))}
           </div>
-          <div className="muted" style={{marginTop:6}}>Use different fonts for the Registered name, Call name, and Titles to preview combinations.</div>
+          <div className="muted" style={{marginTop:6}}>All connector sign text is rendered in dark yellow for preview.</div>
         </div>
       </div>
     </div>

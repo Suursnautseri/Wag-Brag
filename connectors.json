@@ -5,7 +5,8 @@
     "width": 200,
     "height": 140,
     "textX": 100,
-    "textY": 70
+    "textY": 70,
+    "textColor": "#B8860B"
   },
   "hearts": {
     "label": "Hearts",
@@ -13,7 +14,8 @@
     "width": 180,
     "height": 120,
     "textX": 90,
-    "textY": 60
+    "textY": 60,
+    "textColor": "#B8860B"
   },
   "rosette": {
     "label": "Rosette Awards",
@@ -21,6 +23,7 @@
     "width": 180,
     "height": 180,
     "textX": 90,
-    "textY": 90
+    "textY": 90,
+    "textColor": "#B8860B"
   }
 }
