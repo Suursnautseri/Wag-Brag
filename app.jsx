@@ -1,7 +1,12 @@
 
 const { useState, useMemo, useEffect, useRef } = React;
 
-const BODY_SHAPES = {
+/** External silhouettes
+ * We load /silhouettes.json (mapping breed slug -> { d, scale, dx, dy })
+ * and use it to draw the breed silhouette. If missing, we fall back to
+ * the built-in placeholder shapes below.
+ */
+const FALLBACK_BODY_SHAPES = {
   "giant-schnauzer": "M 80 220 C 90 160 150 140 210 140 L 400 140 C 450 140 520 160 540 210 L 560 260 L 600 260 C 620 260 630 280 630 300 L 630 320 C 630 340 620 350 600 350 L 540 350 L 520 420 L 480 420 L 460 350 L 240 350 L 220 420 L 180 420 L 160 350 L 120 350 C 100 350 90 340 90 320 L 90 300 C 90 280 100 260 120 260 L 160 260 Z",
   "golden-retriever": "M 70 230 C 90 170 160 150 230 145 L 420 145 C 470 145 520 165 545 210 L 565 255 L 605 260 C 625 262 635 282 635 300 L 636 322 C 636 340 625 352 605 352 L 545 352 L 525 420 L 485 420 L 465 352 L 245 352 L 225 420 L 185 420 L 165 352 L 120 352 C 100 352 88 340 88 322 L 88 302 C 88 280 101 265 122 262 L 165 258 Z",
   "german-shepherd": "M 60 235 C 85 170 160 150 235 148 L 420 148 C 485 148 540 170 560 210 L 578 252 L 620 258 C 640 260 650 280 650 298 L 650 318 C 650 340 640 352 620 352 L 560 352 L 540 420 L 500 420 L 480 352 L 255 352 L 230 415 L 190 415 L 170 352 L 120 352 C 100 352 88 340 88 320 L 88 300 C 88 280 100 265 120 262 L 165 258 Z",
@@ -102,13 +107,13 @@ function EarsOverlay({ option }) {
 function TailOverlay({ option }) {
   if (option === "docked") return (<rect x={560} y={250} width={20} height={20} fill="#111" />);
   if (option === "bobtail") return (<rect x={555} y={250} width={10} height={14} fill="#111" />);
-  return null; // natural -> none
+  return null;
 }
 
 function App() {
   const [breedMeta, setBreedMeta] = useState(DEFAULT_BREED_META);
-  const breedList = Object.entries(breedMeta);
-  const firstBreed = breedList[0]?.[0] || "giant-schnauzer";
+  const [silhouettes, setSilhouettes] = useState({}); // { slug: { d, scale, dx, dy } }
+  const firstBreed = Object.keys(breedMeta)[0] || "giant-schnauzer";
 
   const [breed, setBreed] = useState(firstBreed);
   const [ears, setEars] = useState(breedMeta[firstBreed]?.defaultEar || "natural");
@@ -129,6 +134,7 @@ function App() {
   const svgRef = useRef(null);
 
   useEffect(() => {
+    // Load breeds
     fetch("breed_options.json").then(r => r.ok ? r.json() : Promise.reject(r.status)).then((data) => {
       if (!data || typeof data !== "object") return;
       setBreedMeta(data);
@@ -136,6 +142,10 @@ function App() {
       if (first) { setBreed(first); setEars(data[first].defaultEar); setTail(data[first].defaultTail); }
     }).catch(() => {});
 
+    // Load silhouettes (optional)
+    fetch("silhouettes.json").then(r => r.ok ? r.json() : {}).then(setSilhouettes).catch(()=>{});
+
+    // Titles
     Promise.all([
       fetch("titles_akc.json").then(r => r.ok ? r.json() : {}),
       fetch("titles_ukc.json").then(r => r.ok ? r.json() : {}),
@@ -178,9 +188,11 @@ function App() {
     const a = document.createElement("a"); a.href = dataUrl; a.download = "wag-and-brag-board.png"; document.body.appendChild(a); a.click(); a.remove();
   }
 
-  const meta = breedMeta[breed] || DEFAULT_BREED_META[breed] || DEFAULT_BREED_META["giant-schnauzer"];
+  const meta = breedMeta[breed] || {};
   const allowedEars = meta.allowedEars || ["natural"];
   const allowedTails = meta.allowedTails || ["natural"];
+
+  const sil = silhouettes[breed]; // { d, scale, dx, dy } if provided
 
   return (
     <div className="container">
@@ -192,7 +204,7 @@ function App() {
           <select value={breed} onChange={(e)=>setBreed(e.target.value)}>
             {Object.entries(breedMeta).map(([id, b]) => (<option key={id} value={id}>{b.label}</option>))}
           </select>
-          <div className="muted" style={{marginTop:6}}>Breed options from <code>breed_options.json</code>.</div>
+          <div className="muted" style={{marginTop:6}}>Silhouette source: {sil ? "custom (silhouettes.json)" : (FALLBACK_BODY_SHAPES[breed] ? "fallback" : "none")}</div>
         </div>
 
         <div className="section">
@@ -328,13 +340,26 @@ function App() {
             {Array.from({ length: 90 }).map((_, i) => (<line key={`v${i}`} x1={i * 10} y1={0} x2={i * 10} y2={720} stroke="#94a3b8" strokeWidth={0.5} />))}
             {Array.from({ length: 72 }).map((_, i) => (<line key={`h${i}`} x1={0} y1={i * 10} x2={900} y2={i * 10} stroke="#94a3b8" strokeWidth={0.5} />))}
           </g>
+
           <g transform="translate(100,60)">
-            <path d={BODY_SHAPES[breed] || BODY_SHAPES["giant-schnauzer"]} fill="#111" />
+            {/* Silhouette layer */}
+            {sil ? (
+              <g transform={`translate(${sil.dx || 0},${sil.dy || 0}) scale(${sil.scale || 1})`}>
+                <path d={sil.d} fill="#111" />
+              </g>
+            ) : (
+              <path d={FALLBACK_BODY_SHAPES[breed] || FALLBACK_BODY_SHAPES["giant-schnauzer"]} fill="#111" />
+            )}
+
+            {/* Overlays */}
             <EarsOverlay option={ears} />
             <TailOverlay option={tail} />
-            <text x={320} y={110} textAnchor="middle" fontFamily="ui-sans-serif" fontSize={28}>{regName}</text>
-            <text x={320} y={130} textAnchor="middle" fontFamily="ui-sans-serif" fontSize={40} fontWeight={700}>{callName}</text>
+
+            <text x={320} y={110} textAnchor="middle" fontFamily={font} fontSize={28}>{regName}</text>
+            <text x={320} y={130} textAnchor="middle" fontFamily={font} fontSize={40} fontWeight={700}>{callName}</text>
           </g>
+
+          {/* Render custom/sourced title pieces */}
           {customPieces.map((p) => (
             <DraggablePiece key={p.id} x={p.x} y={p.y} setPos={(x,y)=>setCustomPieces(arr => arr.map(it => it.id === p.id ? ({...it, x, y}) : it))}
               title={p.title} connector={connector} edges={{ top: "tab", right: "flat", bottom: "blank", left: "flat" }} />
